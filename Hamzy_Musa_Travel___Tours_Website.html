@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamzy Musa Travel & Tours | Luxury Global Mobility & Visa Portal</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandBlue: '#004AD7',
+                        brandBlueDark: '#002C8A',
+                        brandBlueGlow: '#2563EB',
+                        brandGold: '#EAA112',
+                        brandGoldHover: '#D48E06',
+                        brandGoldGlow: '#FBBF24',
+                        slateDark: '#0B132B',
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    boxShadow: {
+                        'glass': '0 8px 32px 0 rgba(0, 74, 215, 0.08)',
+                        'glass-gold': '0 8px 32px 0 rgba(234, 161, 18, 0.15)',
+                        'glow-blue': '0 0 25px rgba(0, 74, 215, 0.25)',
+                        'glow-gold': '0 0 25px rgba(234, 161, 18, 0.35)',
+                        'card-hover': '0 20px 40px -15px rgba(0, 74, 215, 0.12)',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: #F8FAFC;
+            color: #0F172A;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism Cards */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 20px 50px rgba(0, 74, 215, 0.06);
+        }
+
+        .glass-panel-dark {
+            background: rgba(11, 19, 43, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.9);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-6px) scale(1.01);
+            background: #FFFFFF;
+            border-color: rgba(234, 161, 18, 0.6);
+            box-shadow: 0 25px 45px -10px rgba(0, 74, 215, 0.12);
+        }
+
+        /* Ambient Animated Mesh Gradient */
+        .ambient-orb-1 {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0,74,215,0.12) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+            filter: blur(50px);
+            pointer-events: none;
+            z-index: 0;
+            animation: floatOrb 12s infinite alternate ease-in-out;
+        }
+
+        .ambient-orb-2 {
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(234,161,18,0.12) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+            filter: blur(60px);
+            pointer-events: none;
+            z-index: 0;
+            animation: floatOrb 16s infinite alternate-reverse ease-in-out;
+        }
+
+        @keyframes floatOrb {
+            0% { transform: translate(0px, 0px) scale(1); }
+            100% { transform: translate(60px, 40px) scale(1.1); }
+        }
+
+        /* Pulse Gold Ring */
+        .glow-pulse {
+            box-shadow: 0 0 0 0 rgba(234, 161, 18, 0.5);
+            animation: pulseGlow 2s infinite;
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 0 0 rgba(234, 161, 18, 0.5); }
+            70% { box-shadow: 0 0 0 15px rgba(234, 161, 18, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(234, 161, 18, 0); }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #F1F5F9; }
+        ::-webkit-scrollbar-thumb { background: #94A3B8; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #EAA112; }
+    </style>
+</head>
+<body class="antialiased text-slate-900 bg-slate-50 min-h-screen flex flex-col relative selection:bg-brandGold selection:text-slate-900">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-gradient-to-r from-brandBlueDark via-brandBlue to-slateDark text-white text-xs py-2.5 px-4 sticky top-0 z-50 border-b border-white/10 shadow-md">
+        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-3">
+            <div class="flex items-center space-x-6">
+                <a href="tel:+2349128496030" class="flex items-center gap-2 hover:text-brandGold transition font-medium">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <i class="fas fa-phone-alt text-brandGold text-xs"></i>
+                    <span>Nigeria: +234 912 849 6030</span>
+                </a>
+                <span class="hidden md:inline text-white/30">|</span>
+                <a href="tel:+96895611496" class="hidden md:flex items-center gap-2 hover:text-brandGold transition font-medium">
+                    <i class="fas fa-globe-middle text-brandGold text-xs"></i>
+                    <span>Oman Desk: +968 956 114 96</span>
+                </a>
+            </div>
+
+            <div class="flex items-center space-x-5">
+                <div class="hidden sm:flex items-center gap-2 text-slate-200">
+                    <i class="fas fa-clock text-brandGold text-xs"></i>
+                    <span>24/7 Priority Clearances Desk</span>
+                </div>
+                <span class="bg-gradient-to-r from-brandGold to-amber-500 text-slate-950 px-3 py-1 rounded-full font-extrabold text-[10px] uppercase tracking-wider shadow-sm">
+                    Accredited Agency
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="bg-white/90 backdrop-blur-md border-b border-slate-200/80 sticky top-[37px] z-40 transition-all shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-24">
+                
+                <!-- Official Brand Vector Logo -->
+                <a href="#" class="flex items-center space-x-3 group">
+                    <div class="w-16 h-16 flex items-center justify-center transform group-hover:scale-105 transition duration-300">
+                        <svg viewBox="0 0 300 240" class="w-full h-full drop-shadow-md">
+                            <circle cx="150" cy="100" r="48" fill="none" stroke="#004AD7" stroke-width="2.5" stroke-dasharray="4 2" opacity="0.6"/>
+                            <path d="M 115 80 Q 150 55 185 80 Q 165 125 115 80" fill="#004AD7" opacity="0.2"/>
+                            <path d="M 125 115 Q 150 135 175 105" fill="none" stroke="#004AD7" stroke-width="2"/>
+                            <path d="M 55 140 C 95 132, 205 110, 255 45" fill="none" stroke="#EAA112" stroke-width="7" stroke-linecap="round"/>
+                            <path d="M 55 150 C 105 142, 195 120, 240 65" fill="none" stroke="#EAA112" stroke-width="2" stroke-linecap="round"/>
+                            <g transform="translate(242, 38) rotate(-38)">
+                                <polygon points="0,10 26,0 21,10 36,15 21,18 16,30 11,18 0,10" fill="#004AD7"/>
+                            </g>
+                            <path d="M 80 80 L 105 80 L 105 110 L 125 110 L 125 80 L 150 80 L 150 170 L 125 170 L 125 130 L 105 130 L 105 170 L 80 170 Z" fill="#004AD7"/>
+                            <path d="M 155 170 L 155 80 L 180 80 L 200 125 L 220 80 L 245 80 L 245 170 L 225 170 L 225 115 L 205 155 L 195 155 L 175 115 L 175 170 Z" fill="#EAA112"/>
+                        </svg>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-2xl font-black tracking-tight text-slate-900 leading-none">
+                            Hamzy <span class="text-brandGold">Musa</span>
+                        </span>
+                        <span class="text-[10px] font-extrabold tracking-[0.25em] text-brandBlue uppercase mt-1">
+                            TRAVEL & TOURS
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Navigation Links -->
+                <nav class="hidden lg:flex items-center space-x-8 text-sm font-bold text-slate-700">
+                    <a href="#destinations" class="hover:text-brandBlue transition">Regional Corridors</a>
+                    <a href="#services" class="hover:text-brandBlue transition">Services</a>
+                    <a href="#estimator" class="hover:text-brandBlue transition">Visa Calculator</a>
+                    <a href="#tracking" class="hover:text-brandBlue transition">Application Status</a>
+                    <a href="#about" class="hover:text-brandBlue transition">About Agency</a>
+                </nav>
+
+                <!-- Direct Action CTAs -->
+                <div class="hidden sm:flex items-center space-x-4">
+                    <a href="#visa-portal" class="bg-gradient-to-r from-brandBlue to-brandBlueDark hover:from-brandBlueDark hover:to-brandBlue text-white px-6 py-3 rounded-xl font-bold text-xs uppercase tracking-wider transition shadow-lg shadow-blue-500/20 flex items-center gap-2.5">
+                        <i class="fas fa-paper-plane text-brandGold"></i>
+                        <span>Apply For Visa</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Navigation Button -->
+                <button id="mobile-toggle" class="lg:hidden text-slate-800 p-2 text-2xl focus:outline-none" aria-label="Toggle Navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white/95 backdrop-blur-lg border-b border-slate-200 px-6 py-6 space-y-4 shadow-2xl">
+            <a href="#destinations" class="block text-slate-800 font-bold py-2 hover:text-brandBlue">Regional Corridors</a>
+            <a href="#services" class="block text-slate-800 font-bold py-2 hover:text-brandBlue">Services</a>
+            <a href="#estimator" class="block text-slate-800 font-bold py-2 hover:text-brandBlue">Visa Calculator</a>
+            <a href="#tracking" class="block text-slate-800 font-bold py-2 hover:text-brandBlue">Track Application</a>
+            <a href="#about" class="block text-slate-800 font-bold py-2 hover:text-brandBlue">About Us</a>
+            <a href="#visa-portal" class="block w-full text-center bg-brandBlue text-white font-bold py-3.5 rounded-xl tracking-wider text-xs uppercase shadow-md">
+                Fast-Track Application Desk
+            </a>
+        </div>
+    </header>
+
+    <!-- Real-Time Ticker Tape -->
+    <div class="bg-slate-900 text-slate-300 text-xs py-2.5 overflow-hidden border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 flex items-center justify-between gap-4 whitespace-nowrap">
+            <div class="flex items-center gap-2 text-brandGold font-bold uppercase tracking-widest text-[10px] shrink-0">
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                <span>Live Clearance Status:</span>
+            </div>
+            <div class="flex items-center space-x-12 overflow-x-auto no-scrollbar py-0.5 text-[11px] font-medium text-slate-300">
+                <span class="flex items-center gap-2"><strong class="text-white">Saudi Arabia 🇸🇦:</strong> 24-48 Hr Express Visas Active</span>
+                <span class="flex items-center gap-2"><strong class="text-white">UAE Dubai 🇦🇪:</strong> 1 & 2 Year Residence Permits Open</span>
+                <span class="flex items-center gap-2"><strong class="text-white">Oman 🇴🇲:</strong> Direct Employment Slots Available</span>
+                <span class="flex items-center gap-2"><strong class="text-white">Kuwait 🇰🇼:</strong> Police & Medical Clearance Processing</span>
+                <span class="flex items-center gap-2"><strong class="text-white">Egypt 🇪🇬:</strong> Tourist & Business Visas Online</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative py-16 lg:py-24 overflow-hidden bg-gradient-to-b from-blue-50/50 via-slate-50 to-white">
+        <div class="ambient-orb-1 -top-20 -left-20"></div>
+        <div class="ambient-orb-2 top-1/2 right-0"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Hero Copy -->
+                <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2.5 bg-white/80 backdrop-blur-md px-4 py-2 rounded-full border border-slate-200/80 shadow-sm">
+                        <i class="fas fa-shield-halved text-brandGold text-sm"></i>
+                        <span class="text-xs font-bold text-slate-800 tracking-wide uppercase">
+                            Official Licensed Global Mobility Desk
+                        </span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                        Your Direct Gateway To <br/>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brandBlue to-brandBlueGlow">Global Travel</span> & <br class="hidden sm:inline"/>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brandGold to-amber-600">Overseas Work Permits.</span>
+                    </h1>
+
+                    <p class="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed font-medium">
+                        Accelerated visa processing, verified international work contracts, discounted flight fares, and VIP Umrah pilgrimage packages for Saudi Arabia, UAE, Oman, Kuwait, Egypt, and worldwide destinations.
+                    </p>
+
+                    <div class="flex flex-wrap gap-4 justify-center lg:justify-start pt-2">
+                        <a href="#visa-portal" class="px-8 py-4 bg-gradient-to-r from-brandBlue to-brandBlueDark hover:from-brandBlueDark hover:to-brandBlue text-white font-extrabold rounded-xl shadow-lg shadow-blue-600/25 transition tracking-wider text-xs uppercase flex items-center gap-3 transform hover:-translate-y-0.5">
+                            <span>Get Approved Now</span>
+                            <i class="fas fa-arrow-right text-brandGold"></i>
+                        </a>
+                        <a href="https://wa.me/2349128496030" target="_blank" class="px-8 py-4 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold rounded-xl shadow-md transition tracking-wider text-xs uppercase flex items-center gap-2.5 transform hover:-translate-y-0.5">
+                            <i class="fab fa-whatsapp text-lg"></i>
+                            <span>Instant WhatsApp Desk</span>
+                        </a>
+                    </div>
+
+                    <!-- Trust Stats Bar -->
+                    <div class="pt-8 border-t border-slate-200/80 grid grid-cols-3 gap-6 text-center lg:text-left">
+                        <div class="glass-card p-4 rounded-2xl border-white/60">
+                            <div class="text-2xl sm:text-3xl font-black text-brandBlue">99.8%</div>
+                            <div class="text-[11px] text-slate-500 font-bold uppercase mt-1">Approval Ratio</div>
+                        </div>
+                        <div class="glass-card p-4 rounded-2xl border-white/60">
+                            <div class="text-2xl sm:text-3xl font-black text-brandGold">24-48h</div>
+                            <div class="text-[11px] text-slate-500 font-bold uppercase mt-1">Express Visa Turnaround</div>
+                        </div>
+                        <div class="glass-card p-4 rounded-2xl border-white/60">
+                            <div class="text-2xl sm:text-3xl font-black text-slate-800">10k+</div>
+                            <div class="text-[11px] text-slate-500 font-bold uppercase mt-1">Verified Travelers</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Priority Application Portal -->
+                <div class="lg:col-span-5" id="visa-portal">
+                    <div class="glass-panel rounded-3xl p-6 sm:p-8 relative overflow-hidden border border-white shadow-2xl">
+                        <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-brandBlue via-brandGold to-brandBlue"></div>
+
+                        <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-200/60">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900">Priority Application Desk</h3>
+                                <p class="text-slate-500 text-xs mt-0.5">Submit details for direct evaluation</p>
+                            </div>
+                            <div class="w-12 h-12 rounded-2xl bg-blue-50 text-brandBlue flex items-center justify-center text-xl shadow-inner">
+                                <i class="fas fa-passport"></i>
+                            </div>
+                        </div>
+
+                        <form id="portal-form" onsubmit="handlePortalSubmit(event)" class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-extrabold text-slate-700 uppercase tracking-wider mb-1.5">Applicant Full Name</label>
+                                <input type="text" required placeholder="e.g. Abubakar Shehu" class="w-full px-4 py-3 rounded-xl bg-white/90 border border-slate-300/80 text-slate-900 text-sm focus:outline-none focus:border-brandBlue focus:ring-2 focus:ring-brandBlue/20 transition font-medium">
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-extrabold text-slate-700 uppercase tracking-wider mb-1.5">WhatsApp Number</label>
+                                    <input type="tel" required placeholder="+234..." class="w-full px-4 py-3 rounded-xl bg-white/90 border border-slate-300/80 text-slate-900 text-sm focus:outline-none focus:border-brandBlue focus:ring-2 focus:ring-brandBlue/20 transition font-medium">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-extrabold text-slate-700 uppercase tracking-wider mb-1.5">Target Country</label>
+                                    <select required class="w-full px-4 py-3 rounded-xl bg-white/90 border border-slate-300/80 text-slate-900 text-sm focus:outline-none focus:border-brandBlue focus:ring-2 focus:ring-brandBlue/20 transition font-semibold">
+                                        <option value="">Choose Destination</option>
+                                        <option value="Saudi Arabia">Saudi Arabia 🇸🇦</option>
+                                        <option value="UAE (Dubai)">UAE (Dubai) 🇦🇪</option>
+                                        <option value="Oman">Oman 🇴🇲</option>
+                                        <option value="Kuwait">Kuwait 🇰🇼</option>
+                                        <option value="Egypt">Egypt 🇪🇬</option>
+                                        <option value="Other">Other Global Destination</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-extrabold text-slate-700 uppercase tracking-wider mb-1.5">Requested Package</label>
+                                <select required class="w-full px-4 py-3 rounded-xl bg-white/90 border border-slate-300/80 text-slate-900 text-sm focus:outline-none focus:border-brandBlue focus:ring-2 focus:ring-brandBlue/20 transition font-semibold">
+                                    <option value="Work Permit">Overseas Work Permit & Contract</option>
+                                    <option value="Express Visa">Express Tourist / Visit Visa</option>
+                                    <option value="Flight Fares">Discounted Flight Reservation</option>
+                                    <option value="Umrah Package">Umrah Pilgrimage Package</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-extrabold text-slate-700 uppercase tracking-wider mb-1.5">Travel Schedule / Notes</label>
+                                <textarea rows="2" placeholder="Mention tentative departure month or job preference..." class="w-full px-4 py-2.5 rounded-xl bg-white/90 border border-slate-300/80 text-slate-900 text-sm focus:outline-none focus:border-brandBlue focus:ring-2 focus:ring-brandBlue/20 transition font-medium"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full py-4 bg-gradient-to-r from-brandGold to-amber-500 hover:from-amber-500 hover:to-brandGold text-slate-950 font-black rounded-xl shadow-lg shadow-amber-500/25 transition tracking-wider text-xs uppercase flex items-center justify-center gap-2.5 transform active:scale-95">
+                                <i class="fas fa-paper-plane"></i>
+                                <span>Submit For Immediate Processing</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Glassmorphic Application Tracking Section -->
+    <section id="tracking" class="py-12 bg-slate-900 text-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-panel-dark rounded-3xl p-8 sm:p-10 border border-white/10 shadow-2xl relative overflow-hidden">
+                <div class="grid lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-5 space-y-3">
+                        <span class="text-brandGold font-extrabold text-xs uppercase tracking-widest bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20">
+                            Real-Time Applicant Portal
+                        </span>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Track Application Status</h2>
+                        <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+                            Enter your passport reference number to verify document clearance, visa approval status, or embassy attestation.
+                        </p>
+                    </div>
+
+                    <div class="lg:col-span-7">
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <div class="relative flex-1">
+                                <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                                <input id="track-input" type="text" placeholder="Enter Passport No. or Ref (e.g. HM-89241)" class="w-full pl-11 pr-4 py-3.5 rounded-xl bg-slate-800/80 border border-slate-700 text-white text-sm focus:outline-none focus:border-brandGold transition">
+                            </div>
+                            <button onclick="simulateTracking()" class="px-6 py-3.5 bg-brandGold text-slate-950 font-extrabold rounded-xl text-xs uppercase tracking-wider hover:bg-amber-400 transition shrink-0">
+                                Verify Clearance
+                            </button>
+                        </div>
+
+                        <!-- Tracking Result Box -->
+                        <div id="tracking-result" class="hidden mt-6 bg-slate-800/90 rounded-2xl p-6 border border-emerald-500/30 text-left">
+                            <div class="flex items-center justify-between border-b border-slate-700/80 pb-4 mb-4">
+                                <div>
+                                    <span class="text-xs text-slate-400 font-semibold block">Applicant Record:</span>
+                                    <span class="text-base font-bold text-white" id="res-name">ABUBAKAR SHEHU</span>
+                                </div>
+                                <span class="bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 text-xs font-bold px-3 py-1 rounded-full uppercase">
+                                    Approved & Ready
+                                </span>
+                            </div>
+
+                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 text-xs">
+                                <div>
+                                    <span class="text-slate-400 block">Target Hub:</span>
+                                    <strong class="text-white" id="res-country">Saudi Arabia 🇸🇦</strong>
+                                </div>
+                                <div>
+                                    <span class="text-slate-400 block">Category:</span>
+                                    <strong class="text-white">Work Visa & Permit</strong>
+                                </div>
+                                <div>
+                                    <span class="text-slate-400 block">Clearance Desk:</span>
+                                    <strong class="text-brandGold">Embassy Attested</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Regional Hubs Section -->
+    <section id="destinations" class="py-20 bg-white border-y border-slate-200 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brandGold font-black text-xs uppercase tracking-widest bg-amber-50 px-4 py-1.5 rounded-full border border-amber-200/80">
+                    REGIONAL EXPEDITED HUBS
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-4">Top Destination Corridors</h2>
+                <p class="text-slate-600 text-sm mt-2 font-medium">Verified visa issuance & direct employment contract processing.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+                
+                <!-- Kuwait Card -->
+                <div class="glass-card rounded-2xl p-6 text-center group cursor-pointer relative overflow-hidden">
+                    <div class="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden border-2 border-slate-200/80 p-1 group-hover:border-brandBlue transition duration-300">
+                        <svg viewBox="0 0 600 300" class="w-full h-full object-cover rounded-full shadow-sm">
+                            <rect width="600" height="100" fill="#007A3D"/>
+                            <rect y="100" width="600" height="100" fill="#FFF"/>
+                            <rect y="200" width="600" height="100" fill="#CE1126"/>
+                            <polygon points="0,0 200,150 0,300" fill="#000"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-extrabold text-lg text-slate-900 group-hover:text-brandBlue transition">Kuwait</h3>
+                    <p class="text-xs font-bold text-brandGold mt-1">Work Permits & Visas</p>
+                    <div class="mt-4 pt-4 border-t border-slate-100 text-[11px] text-slate-500 flex justify-between font-semibold">
+                        <span>Speed: 3-5 Days</span>
+                        <span class="text-emerald-600 font-extrabold">Active</span>
+                    </div>
+                </div>
+
+                <!-- Saudi Arabia Card -->
+                <div class="glass-card rounded-2xl p-6 text-center group cursor-pointer relative overflow-hidden">
+                    <div class="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden border-2 border-slate-200/80 p-1 group-hover:border-brandBlue transition duration-300">
+                        <svg viewBox="0 0 900 600" class="w-full h-full object-cover rounded-full shadow-sm">
+                            <rect width="900" height="600" fill="#006C35"/>
+                            <text x="450" y="380" font-size="280" fill="#FFF" font-weight="bold" text-anchor="middle">🇸🇦</text>
+                        </svg>
+                    </div>
+                    <h3 class="font-extrabold text-lg text-slate-900 group-hover:text-brandBlue transition">Saudi Arabia</h3>
+                    <p class="text-xs font-bold text-brandGold mt-1">Umrah, Work & Visit</p>
+                    <div class="mt-4 pt-4 border-t border-slate-100 text-[11px] text-slate-500 flex justify-between font-semibold">
+                        <span>Speed: 24-48hrs</span>
+                        <span class="text-emerald-600 font-extrabold">Express</span>
+                    </div>
+                </div>
+
+                <!-- Oman Card -->
+                <div class="glass-card rounded-2xl p-6 text-center group cursor-pointer relative overflow-hidden">
+                    <div class="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden border-2 border-slate-200/80 p-1 group-hover:border-brandBlue transition duration-300">
+                        <svg viewBox="0 0 900 600" class="w-full h-full object-cover rounded-full shadow-sm">
+                            <rect width="900" height="200" fill="#FFF"/>
+                            <rect y="200" width="900" height="200" fill="#DB161B"/>
+                            <rect y="400" width="900" height="200" fill="#008000"/>
+                            <rect width="300" height="600" fill="#DB161B"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-extrabold text-lg text-slate-900 group-hover:text-brandBlue transition">Oman</h3>
+                    <p class="text-xs font-bold text-brandGold mt-1">Direct Job Permits</p>
+                    <div class="mt-4 pt-4 border-t border-slate-100 text-[11px] text-slate-500 flex justify-between font-semibold">
+                        <span>Direct Desk</span>
+                        <span class="text-emerald-600 font-extrabold">Guaranteed</span>
+                    </div>
+                </div>
+
+                <!-- UAE (Dubai) Card -->
+                <div class="glass-card rounded-2xl p-6 text-center group cursor-pointer relative overflow-hidden">
+                    <div class="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden border-2 border-slate-200/80 p-1 group-hover:border-brandBlue transition duration-300">
+                        <svg viewBox="0 0 1200 600" class="w-full h-full object-cover rounded-full shadow-sm">
+                            <rect width="1200" height="200" fill="#00732F"/>
+                            <rect y="200" width="1200" height="200" fill="#FFF"/>
+                            <rect y="400" width="1200" height="200" fill="#000"/>
+                            <rect width="300" height="600" fill="#FF0000"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-extrabold text-lg text-slate-900 group-hover:text-brandBlue transition">UAE (Dubai)</h3>
+                    <p class="text-xs font-bold text-brandGold mt-1">1 & 2 Year Residency</p>
+                    <div class="mt-4 pt-4 border-t border-slate-100 text-[11px] text-slate-500 flex justify-between font-semibold">
+                        <span>Speed: 48hrs</span>
+                        <span class="text-emerald-600 font-extrabold">Popular</span>
+                    </div>
+                </div>
+
+                <!-- Egypt Card -->
+                <div class="glass-card rounded-2xl p-6 text-center group cursor-pointer relative overflow-hidden">
+                    <div class="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden border-2 border-slate-200/80 p-1 group-hover:border-brandBlue transition duration-300">
+                        <svg viewBox="0 0 900 600" class="w-full h-full object-cover rounded-full shadow-sm">
+                            <rect width="900" height="200" fill="#CE1126"/>
+                            <rect y="200" width="900" height="200" fill="#FFF"/>
+                            <rect y="400" width="900" height="200" fill="#000"/>
+                            <circle cx="450" cy="300" r="40" fill="#C09300"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-extrabold text-lg text-slate-900 group-hover:text-brandBlue transition">Egypt</h3>
+                    <p class="text-xs font-bold text-brandGold mt-1">Tourist & Business</p>
+                    <div class="mt-4 pt-4 border-t border-slate-100 text-[11px] text-slate-500 flex justify-between font-semibold">
+                        <span>Speed: 2-4 Days</span>
+                        <span class="text-emerald-600 font-extrabold">Available</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Visa Fee & Requirements Calculator -->
+    <section id="estimator" class="py-20 bg-slate-100/70 border-b border-slate-200 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-panel rounded-3xl p-8 sm:p-12 border border-white shadow-2xl">
+                <div class="grid lg:grid-cols-12 gap-10 items-center">
+                    
+                    <div class="lg:col-span-5 space-y-4">
+                        <span class="text-brandBlue font-bold text-xs uppercase tracking-widest bg-blue-100/80 px-3.5 py-1.5 rounded-full">
+                            Interactive Visa Estimator
+                        </span>
+                        <h2 class="text-3xl font-extrabold text-slate-900 leading-tight">Instant Requirements & Clearance Breakdown</h2>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Select destination and visa parameters below to generate document requirements and turnaround schedules.
+                        </p>
+                    </div>
+
+                    <div class="lg:col-span-7 bg-white/90 p-6 sm:p-8 rounded-2xl border border-slate-200/80 shadow-md">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                            <div>
+                                <label class="block text-xs font-extrabold text-slate-700 uppercase mb-2">Select Country</label>
+                                <select id="calc-country" onchange="updateEstimator()" class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-300 text-slate-900 text-sm font-bold focus:outline-none focus:border-brandBlue transition">
+                                    <option value="saudi">Saudi Arabia 🇸🇦</option>
+                                    <option value="uae">UAE (Dubai) 🇦🇪</option>
+                                    <option value="oman">Oman 🇴🇲</option>
+                                    <option value="kuwait">Kuwait 🇰🇼</option>
+                                    <option value="egypt">Egypt 🇪🇬</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-extrabold text-slate-700 uppercase mb-2">Visa Category</label>
+                                <select id="calc-type" onchange="updateEstimator()" class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-300 text-slate-900 text-sm font-bold focus:outline-none focus:border-brandBlue transition">
+                                    <option value="work">Overseas Work Permit</option>
+                                    <option value="visit">Tourist / Visit Visa</option>
+                                    <option value="umrah">Umrah Pilgrimage</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Result Display Panel -->
+                        <div class="bg-gradient-to-br from-slate-900 to-slate-800 text-white p-6 rounded-2xl shadow-lg flex flex-col sm:flex-row justify-between items-center gap-6">
+                            <div>
+                                <div class="text-[11px] text-brandGold font-bold uppercase tracking-wider">Estimated Turnaround Time</div>
+                                <div id="calc-time" class="text-2xl font-black text-white mt-0.5">24 - 48 Hours</div>
+                                <div id="calc-docs" class="text-xs text-slate-300 mt-2 leading-relaxed">
+                                    Required Docs: Passport Bio Page, Digital Photo, Medical Clearance
+                                </div>
+                            </div>
+                            <a id="calc-whatsapp-btn" href="https://wa.me/2349128496030" target="_blank" class="px-6 py-3.5 bg-gradient-to-r from-brandGold to-amber-500 hover:from-amber-500 hover:to-brandGold text-slate-950 font-extrabold text-xs uppercase tracking-wider rounded-xl transition shadow-md whitespace-nowrap shrink-0">
+                                Apply On WhatsApp
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Services Grid -->
+    <section id="services" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brandGold font-black text-xs uppercase tracking-widest bg-amber-50 px-4 py-1.5 rounded-full border border-amber-200">
+                    OUR CORE CAPABILITIES
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-4">Full-Spectrum Travel & Permit Solutions</h2>
+                <div class="w-20 h-1.5 bg-brandBlue mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <!-- Service 1 -->
+                <div class="glass-card rounded-3xl p-8 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-14 h-14 bg-blue-50 text-brandBlue rounded-2xl flex items-center justify-center text-2xl mb-6 font-bold group-hover:bg-brandBlue group-hover:text-white transition duration-300 shadow-sm">
+                            <i class="fas fa-passport"></i>
+                        </div>
+                        <h3 class="text-xl font-extrabold text-slate-900 mb-3">Visa Processing</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6 font-medium">
+                            Guaranteed fast-track entry clearance for tourist, business, visit, and medical travel across GCC countries and worldwide.
+                        </p>
+                    </div>
+                    <a href="#visa-portal" class="text-brandBlue font-extrabold text-xs uppercase tracking-wider flex items-center gap-2 group-hover:text-brandGold transition">
+                        <span>Apply For Visa</span>
+                        <i class="fas fa-chevron-right text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="glass-card rounded-3xl p-8 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-14 h-14 bg-amber-50 text-brandGold rounded-2xl flex items-center justify-center text-2xl mb-6 font-bold group-hover:bg-brandGold group-hover:text-slate-950 transition duration-300 shadow-sm">
+                            <i class="fas fa-file-contract"></i>
+                        </div>
+                        <h3 class="text-xl font-extrabold text-slate-900 mb-3">Work Permit & Docs</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6 font-medium">
+                            Official overseas employment permits, job contract authentication, medical attestations, and direct embassy submission.
+                        </p>
+                    </div>
+                    <a href="#visa-portal" class="text-brandBlue font-extrabold text-xs uppercase tracking-wider flex items-center gap-2 group-hover:text-brandGold transition">
+                        <span>Get Permit Info</span>
+                        <i class="fas fa-chevron-right text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="glass-card rounded-3xl p-8 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-14 h-14 bg-blue-50 text-brandBlue rounded-2xl flex items-center justify-center text-2xl mb-6 font-bold group-hover:bg-brandBlue group-hover:text-white transition duration-300 shadow-sm">
+                            <i class="fas fa-plane-departure"></i>
+                        </div>
+                        <h3 class="text-xl font-extrabold text-slate-900 mb-3">Flight Tickets</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6 font-medium">
+                            Exclusive airline fares and discounted flights to Gulf destinations, Europe, Asia, and North America with flexible rebooking.
+                        </p>
+                    </div>
+                    <a href="https://wa.me/2349128496030" target="_blank" class="text-brandBlue font-extrabold text-xs uppercase tracking-wider flex items-center gap-2 group-hover:text-brandGold transition">
+                        <span>Book Flight Fares</span>
+                        <i class="fas fa-chevron-right text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="glass-card rounded-3xl p-8 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-14 h-14 bg-amber-50 text-brandGold rounded-2xl flex items-center justify-center text-2xl mb-6 font-bold group-hover:bg-brandGold group-hover:text-slate-950 transition duration-300 shadow-sm">
+                            <i class="fas fa-kaaba"></i>
+                        </div>
+                        <h3 class="text-xl font-extrabold text-slate-900 mb-3">Travel & Tours</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6 font-medium">
+                            Bespoke Umrah packages, luxury hotel reservations in Makkah & Madinah, airport pickups, and guided holiday tours.
+                        </p>
+                    </div>
+                    <a href="#visa-portal" class="text-brandBlue font-extrabold text-xs uppercase tracking-wider flex items-center gap-2 group-hover:text-brandGold transition">
+                        <span>Book Tour Package</span>
+                        <i class="fas fa-chevron-right text-xs"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- About Agency Section -->
+    <section id="about" class="py-20 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                
+                <div class="relative">
+                    <div class="rounded-3xl overflow-hidden shadow-2xl border border-slate-200">
+                        <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1200&q=80" alt="Travel Executive" class="w-full h-[420px] object-cover">
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 glass-panel p-6 rounded-2xl border border-white shadow-2xl hidden sm:block max-w-xs">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-amber-100 text-brandGold rounded-xl flex items-center justify-center font-bold text-2xl shrink-0">
+                                <i class="fas fa-certificate"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-sm">Reliable • Professional</h4>
+                                <p class="text-xs text-slate-500">Trusted Global Mobility Desk</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <span class="text-brandBlue font-black text-xs uppercase tracking-widest bg-blue-100/80 px-3.5 py-1.5 rounded-full">
+                        ABOUT HAMZY MUSA TRAVEL & TOURS
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 leading-tight">
+                        Your Professional Travel & Overseas Work Partner
+                    </h2>
+                    <p class="text-slate-600 text-base leading-relaxed font-medium">
+                        Hamzy Musa Travel & Tours is an accredited travel agency specializing in visa clearance, authentic work permit acquisition, flight ticketing, and custom pilgrimage arrangements. Operating with primary desks in Nigeria and Oman, we ensure direct embassy submission and legal document verification.
+                    </p>
+
+                    <div class="space-y-3.5 pt-2">
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-check-circle text-brandGold text-lg"></i>
+                            <span class="text-slate-800 font-bold text-sm">Direct Embassy & Portal Fast-Track Clearance</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-check-circle text-brandGold text-lg"></i>
+                            <span class="text-slate-800 font-bold text-sm">24/7 Priority WhatsApp & Desk Consultation</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-check-circle text-brandGold text-lg"></i>
+                            <span class="text-slate-800 font-bold text-sm">Verified Work Permits with Legal Employer Contracts</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Direct Desk Contacts Section -->
+    <section id="contact" class="py-20 bg-white border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-brandGold font-black text-xs uppercase tracking-widest bg-amber-50 px-4 py-1.5 rounded-full border border-amber-200">
+                    DIRECT CONTACT DESKS
+                </span>
+                <h2 class="text-3xl font-extrabold text-slate-900 mt-4">Speak directly with our agents</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Phone Nigeria -->
+                <a href="tel:+2349128496030" class="glass-card p-8 rounded-3xl block group text-center sm:text-left">
+                    <div class="w-12 h-12 bg-blue-50 text-brandBlue rounded-2xl flex items-center justify-center text-xl mb-6 group-hover:bg-brandBlue group-hover:text-white transition duration-300">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <span class="text-xs font-bold text-brandGold uppercase tracking-wider block mb-1">Nigeria Office Desk</span>
+                    <h3 class="text-xl font-black text-slate-900">+234 912 849 6030</h3>
+                    <p class="text-xs text-slate-500 mt-2 font-medium">Call or WhatsApp for instant consultation</p>
+                </a>
+
+                <!-- Phone Oman -->
+                <a href="tel:+96895611496" class="glass-card p-8 rounded-3xl block group text-center sm:text-left">
+                    <div class="w-12 h-12 bg-amber-50 text-brandGold rounded-2xl flex items-center justify-center text-xl mb-6 group-hover:bg-brandGold group-hover:text-slate-950 transition duration-300">
+                        <i class="fas fa-globe-asia"></i>
+                    </div>
+                    <span class="text-xs font-bold text-brandGold uppercase tracking-wider block mb-1">Oman / Gulf Representative</span>
+                    <h3 class="text-xl font-black text-slate-900">+968 956 114 96</h3>
+                    <p class="text-xs text-slate-500 mt-2 font-medium">Middle-East regional support desk</p>
+                </a>
+
+                <!-- Email -->
+                <a href="mailto:hamzymusa6030@gmail.com" class="glass-card p-8 rounded-3xl block group text-center sm:text-left">
+                    <div class="w-12 h-12 bg-slate-100 text-slate-800 rounded-2xl flex items-center justify-center text-xl mb-6 group-hover:bg-slate-900 group-hover:text-white transition duration-300">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <span class="text-xs font-bold text-brandGold uppercase tracking-wider block mb-1">Official Email</span>
+                    <h3 class="text-base font-black text-slate-900 truncate">hamzymusa6030@gmail.com</h3>
+                    <p class="text-xs text-slate-500 mt-2 font-medium">Send passport copies & documentation</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Live WhatsApp Button -->
+    <a href="https://wa.me/2349128496030?text=Hello%20Hamzy%20Musa%20Travel%20%26%20Tours,%20I%20want%20to%20inquire%20about%20visa%20and%20work%20permit%20services." 
+       target="_blank" 
+       class="fixed bottom-6 right-6 z-50 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-3.5 rounded-full shadow-2xl flex items-center space-x-3 transition duration-300 font-bold border-2 border-white glow-pulse">
+        <i class="fab fa-whatsapp text-2xl"></i>
+        <span class="hidden sm:inline text-xs uppercase tracking-wider">Chat On WhatsApp</span>
+    </a>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-400 text-sm py-12 mt-auto border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-12">
+                
+                <div>
+                    <div class="text-xl font-black text-white tracking-tight flex items-center mb-2">
+                        Hamzy <span class="text-brandGold ml-1">Musa</span>
+                    </div>
+                    <p class="text-[11px] text-amber-400 font-black tracking-widest uppercase mb-4">
+                        RELIABLE • PROFESSIONAL • TRUSTED
+                    </p>
+                    <p class="text-xs text-slate-400 leading-relaxed font-medium">
+                        Authorized agency for international visa clearance, overseas work permits, and global flight ticketing.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-xs text-white uppercase tracking-wider mb-4 font-bold">Quick Navigation</h4>
+                    <ul class="space-y-2 text-xs font-medium">
+                        <li><a href="#destinations" class="hover:text-brandGold transition">Regional Corridors</a></li>
+                        <li><a href="#services" class="hover:text-brandGold transition">Core Services</a></li>
+                        <li><a href="#estimator" class="hover:text-brandGold transition">Visa Calculator</a></li>
+                        <li><a href="#tracking" class="hover:text-brandGold transition">Track Status</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xs text-white uppercase tracking-wider mb-4 font-bold">Corridors</h4>
+                    <ul class="space-y-2 text-xs font-medium text-slate-400">
+                        <li>Saudi Arabia Umrah & Work</li>
+                        <li>UAE (Dubai) Visas</li>
+                        <li>Oman Job Visas</li>
+                        <li>Kuwait Work Permits</li>
+                        <li>Egypt Tourist & Business</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xs text-white uppercase tracking-wider mb-4 font-bold">Contact Lines</h4>
+                    <ul class="space-y-2.5 text-xs font-medium">
+                        <li><i class="fas fa-phone text-brandGold me-2"></i>+234 912 849 6030</li>
+                        <li><i class="fas fa-globe text-brandGold me-2"></i>+968 956 114 96</li>
+                        <li><i class="fas fa-envelope text-brandGold me-2"></i>hamzymusa6030@gmail.com</li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="border-t border-slate-800/80 pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 font-medium">
+                <div>&copy; <span id="year"></span> HAMZY MUSA TRAVEL & TOURS. ALL RIGHTS RESERVED.</div>
+                <div class="mt-2 sm:mt-0 text-amber-400 font-bold tracking-wider">RELIABLE • PROFESSIONAL • TRUSTED</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Set dynamic copyright year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile Menu Drawer Toggle
+        const toggleBtn = document.getElementById('mobile-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        toggleBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Dynamic Visa Estimator Dataset
+        const estimatorData = {
+            saudi: {
+                work: { time: '3 - 5 Days', docs: 'Passport Bio Page, Medical Test Clearance, Contract Attestation' },
+                visit: { time: '24 - 48 Hours', docs: 'Passport Bio Page, Digital Photo (White Background)' },
+                umrah: { time: '24 - 48 Hours', docs: 'Passport Bio Page, Vaccination Certificate' }
+            },
+            uae: {
+                work: { time: '5 - 7 Days', docs: 'Passport, Passport Photo, Attested Academic Certificates' },
+                visit: { time: '24 - 48 Hours', docs: 'Passport Bio Page, Passport Photo' },
+                umrah: { time: 'N/A', docs: 'N/A' }
+            },
+            oman: {
+                work: { time: '3 - 5 Days', docs: 'Passport, Medical Clearance, GCC Job Offer Letter' },
+                visit: { time: '2 - 3 Days', docs: 'Passport Bio Page, Flight Ticket Reservation' },
+                umrah: { time: 'N/A', docs: 'N/A' }
+            },
+            kuwait: {
+                work: { time: '5 - 10 Days', docs: 'Passport, Police Character Clearance, Medical Certificate' },
+                visit: { time: '3 - 5 Days', docs: 'Passport Bio Page, Sponsor Details' },
+                umrah: { time: 'N/A', docs: 'N/A' }
+            },
+            egypt: {
+                work: { time: '7 - 12 Days', docs: 'Passport, Security Clearance, Employment Offer' },
+                visit: { time: '2 - 4 Days', docs: 'Passport Bio Page, Hotel Reservation' },
+                umrah: { time: 'N/A', docs: 'N/A' }
+            }
+        };
+
+        function updateEstimator() {
+            const country = document.getElementById('calc-country').value;
+            const type = document.getElementById('calc-type').value;
+            const res = estimatorData[country]?.[type] || { time: '2 - 5 Days', docs: 'Passport & Standard Travel Documents' };
+
+            document.getElementById('calc-time').textContent = res.time;
+            document.getElementById('calc-docs').textContent = `Required Docs: ${res.docs}`;
+        }
+
+        // Application Tracking Simulation
+        function simulateTracking() {
+            const input = document.getElementById('track-input').value.trim();
+            const resultBox = document.getElementById('tracking-result');
+
+            if (input === "") {
+                alert("Please enter a passport number or application reference.");
+                return;
+            }
+
+            resultBox.classList.remove('hidden');
+            resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        // Priority Portal Submission
+        function handlePortalSubmit(e) {
+            e.preventDefault();
+            
+            const toast = document.createElement('div');
+            toast.className = 'fixed top-12 right-6 z-50 bg-white border-2 border-brandGold text-slate-900 px-6 py-4 rounded-2xl shadow-2xl flex items-center space-x-4 transition transform duration-300';
+            toast.innerHTML = `
+                <div class="w-10 h-10 rounded-full bg-amber-100 text-brandGold flex items-center justify-center font-bold text-xl shrink-0">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <div>
+                    <h4 class="font-extrabold text-sm text-slate-900">Application Received!</h4>
+                    <p class="text-xs text-slate-600">Our priority desk agent will contact you on WhatsApp shortly.</p>
+                </div>
+            `;
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                toast.remove();
+            }, 4500);
+
+            e.target.reset();
+        }
+    </script>
+</body>
+</html>
